@@ -40,8 +40,6 @@ const account2 = {
   locale: 'en-US',
 };
 
-const accounts = [account1, account2];
-
 const body = document.querySelector('body');
 const labelWelcome = document.querySelector('.greet--username');
 const labelDate = document.querySelector('.date');
@@ -55,25 +53,37 @@ const containerApp = document.querySelector('.app');
 const containerMovements = document.querySelector('.movements');
 
 const btnLogin = document.querySelector('.login__btn');
-const btnTransfer = document.querySelector('.form__btn--transfer');
-const btnLoan = document.querySelector('.form__btn--loan');
+const showTransfer = document.querySelector('.show--transfer');
+const btnTransfer = document.querySelector('.btn--transfer');
+
+const btnLoan = document.querySelector('.btn--loan');
 const btnClose = document.querySelector('.form__btn--close');
 const btnSort = document.querySelector('.btn--sort');
 const reqTransfer = document.querySelector('.transfer__modal--btn');
-
-const operationTransfer = document.querySelector('.operation--transfer');
 
 const inputLoginUsername = document.querySelector('.login__input--user');
 const inputLoginPin = document.querySelector('.login__input--pin');
 const inputTransferTo = document.querySelector('.form__input--to');
 const inputTransferAmount = document.querySelector('.form__input--amount');
-const inputLoanAmount = document.querySelector('.form__input--loan-amount');
+const inputLoanAmount = document.querySelector('.form__input--loan--amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 const loginBtn = document.querySelector('.login-btn');
 const loginDisplay = document.querySelector('.main__container');
+
+const operationTransfer = document.querySelector('.btn--transfer');
+const transferModal = document.querySelector('.modal__transfer');
+const closeModal = document.querySelectorAll('.close-modal');
+const overlay = document.querySelector('.overlay');
+
+const showLoanReq = document.querySelector('.show--loan');
+const loanModal = document.querySelector('.modal__loan');
 /////////////////////////////////////////////////
+
+const accounts = [account1, account2];
+let currentAccount, timer;
+let sorted = false;
 // Functions
 
 const formatMovementDate = function (date, locale) {
@@ -95,6 +105,7 @@ const formatCur = function (value, locale, currency) {
 };
 
 const displayMovements = function (acc, sort = false) {
+  console.log(acc);
   containerMovements.innerHTML = '';
 
   const movs = sort
@@ -199,7 +210,6 @@ const starLogOutTimer = function () {
 
 ///////////////////////////////////////
 // Event handlers
-let currentAccount, timer;
 
 /// LOGIN BUTTON-START
 loginBtn.addEventListener('click', function (e) {
@@ -209,7 +219,6 @@ loginBtn.addEventListener('click', function (e) {
     acc => acc.username === inputLoginUsername.value
   );
   console.log(currentAccount);
-  console.log();
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
@@ -245,62 +254,103 @@ loginBtn.addEventListener('click', function (e) {
 /// LOGIN BUTTON-ENDS
 
 /// TRANSFER BUTTON-START
-// btnTransfer.addEventListener('click', function (e) {
-//   e.preventDefault();
-//   const amount = Number(inputTransferAmount.value);
-//   const receiverAcc = accounts.find(
-//     acc => acc.username === inputTransferTo.value
-//   );
-//   inputTransferAmount.value = inputTransferTo.value = '';
+showTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  setTimeout(() => {
+    transferModal.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+  }, 500);
+});
 
-//   if (
-//     amount > 0 &&
-//     receiverAcc &&
-//     currentAccount.balance >= amount &&
-//     receiverAcc?.username !== currentAccount.username
-//   ) {
-//     // Doing the transfer
-//     currentAccount.movements.push(-amount);
-//     receiverAcc.movements.push(amount);
+showLoanReq.addEventListener('click', function (e) {
+  e.preventDefault();
+  e.preventDefault();
+  setTimeout(() => {
+    loanModal.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+  }, 500);
+});
 
-//     // Transfer date
-//     currentAccount.movementsDates.push(new Date().toISOString());
-//     receiverAcc.movementsDates.push(new Date().toISOString());
-//     // Update UI
-//     updateUI(currentAccount);
-//   }
-// });
+closeModal.forEach(btn =>
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (!transferModal.className.includes('hidden')) {
+      transferModal.classList.add('hidden');
+      overlay.classList.add('hidden');
+    }
+    if (!loanModal.className.includes('hidden')) {
+      loanModal.classList.add('hidden');
+      overlay.classList.add('hidden');
+    }
+  })
+);
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+  inputTransferAmount.value = inputTransferTo.value = '';
+
+  if (
+    amount > 0 &&
+    receiverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.username !== currentAccount.username
+  ) {
+    // Doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+
+    // Transfer date
+    currentAccount.movementsDates.push(new Date().toISOString());
+    receiverAcc.movementsDates.push(new Date().toISOString());
+    // Update UI
+    updateUI(currentAccount);
+
+    setTimeout(() => {
+      transferModal.classList.add('hidden');
+      overlay.classList.add('hidden');
+    }, 500);
+  }
+});
 /// TRANSFER BUTTON-ENDS
 
 /// LOAN BUTTON-START
-// btnLoan.addEventListener('click', function (e) {
-//   e.preventDefault();
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Math.floor(inputLoanAmount.value);
+  console.log(amount);
 
-//   const amount = Math.floor(inputLoanAmount.value);
+  console;
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    setTimeout(function () {
+      // Add movement
+      currentAccount.movements.push(amount);
 
-//   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-//     setTimeout(function () {
-//       // Add movement
-//       currentAccount.movements.push(amount);
+      // Add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-//       // Add loan date
-//       currentAccount.movementsDates.push(new Date().toISOString());
+      // Update UI
+      updateUI(currentAccount);
+    }, 3000);
 
-//       // Update UI
-//       updateUI(currentAccount);
-//     }, 3000);
-//   }
-//   inputLoanAmount.value = '';
-// });
+    setTimeout(() => {
+      loanModal.classList.add('hidden');
+      overlay.classList.add('hidden');
+    }, 500);
+  }
+  inputLoanAmount.value = '';
+});
 /// LOAN BUTTON-ENDS
 
-// let sorted = false;
-// btnSort.addEventListener('click', function (e) {
-//   console.log('click');
-//   e.preventDefault();
-//   displayMovements(currentAccount.movements, !sorted);
-//   sorted = !sorted;
-// });
+btnSort.addEventListener('click', function (e) {
+  console.log('click');
+  e.preventDefault();
+  displayMovements(currentAccount, !sorted);
+  sorted = !sorted;
+});
 
 // reqTransfer.addEventListener('click', function (e) {
 //   e.preventDefault();

@@ -51,6 +51,7 @@
       <header class="greet">
         <div>
           <h1>Welcome back</h1>
+          <span class="greet--username-line"></span>
           <p class="greet--username">"Username"</p>
         </div>
         <div class="sub-titles">
@@ -68,22 +69,31 @@
         <div>
           <p class="balance__label">Current balance</p>
         </div>
+
         <p class="balance__value">0000€</p>
       </div>
 
       <!-- SUMMARY -->
       <div class="summary">
         <div class="summary__container">
-          <p class="summary__label">In</p>
-          <p class="summary__value">
-            <span class="summary__value--in">0000</span> €
-          </p>
-          <p class="summary__label">Out</p>
-          <p class="summary__value">
-            <span class="summary__value--out">0000</span> €
-          </p>
-          <p class="summary__label">Interest</p>
-          <p class="summary__value summary__value--interest">0000€</p>
+          <div class="summary__container--item">
+            <p class="summary__label">In</p>
+            <p class="summary__value">
+              <span class="summary__value--in">0000</span>
+            </p>
+          </div>
+          <div class="summary__container--item">
+            <p class="summary__label">Out</p>
+            <p class="summary__value">
+              <span class="summary__value--out">0000</span>
+            </p>
+          </div>
+          <div class="summary__container--item">
+            <p class="summary__label">Interest</p>
+            <p class="summary__value">
+              <span class="summary__value--interest">0000</span>
+            </p>
+          </div>
         </div>
       </div>
 
@@ -103,43 +113,54 @@
         </div>
       </div>
 
-      <!-- OPERATION: TRANSFERS -->
+      <!-- OPERATIONS NAV -->
       <div class="operations__container">
         <div class="operations__container--item">
           <button class="btn--sort">Sort Movements</button>
         </div>
 
         <div class="operations__container--item">
-          <button class="">Transfer Money</button>
+          <button class="show--transfer">Transfer Money</button>
         </div>
 
         <div class="operations__container--item">
-          <button class="op-btn loan__modal--btn">Loan Request</button>
+          <button class="show--loan">Loan Request</button>
         </div>
-
-        <div class="form__operations--transfer hide">
-          <h2>Transfer money</h2>
-          <form class="form">
-            <input type="text" class="form__input form__input--to" />
-            <input type="number" class="form__input form__input--amount" />
-            <button class="form__btn form__btn--transfer">&rarr;</button>
-            <label class="form__label">Transfer to</label>
-            <label class="form__label">Amount</label>
-          </form>
-        </div>
-
-        <!-- OPERATION: LOAN -->
-        <!-- <div class="operation operation--loan">
-          <h2>Request loan</h2>
-          <form class="form form--loan">
-            <input type="number" class="form__input form__input--loan-amount" />
-            <button class="form__btn form__btn--loan">&rarr;</button>
-            <label class="form__label form__label--loan">Amount</label>
-          </form>
-        </div> -->
       </div>
 
-      <!-- OPERATION: CLOSE -->
+      <!-- MODAL OPTIONS --- TRANSFER -->
+      <div class="modal__transfer hidden">
+        <button class="close-modal">&times;</button>
+        <h2>Transfer money</h2>
+        <form class="modal__transfer__form">
+          <label class="modal__transfer__form--label">Transfer to</label>
+          <input
+            type="text"
+            class="modal__transfer__form__input form__input--to"
+          />
+          <label class="modal__transfer__form--label">Amount</label>
+          <input
+            type="number"
+            class="modal__transfer__form__input form__input--amount"
+          />
+          <button class="btn--transfer">Send</button>
+        </form>
+      </div>
+
+      <!-- MODAL OPTIONS --- LOAN -->
+      <div class="modal__loan hidden">
+        <button class="close-modal">&times;</button>
+        <h2>Request Loan</h2>
+        <form class="modal__loan__form">
+          <label class="modal__loan__form--label">Amount</label>
+          <input
+            type="number"
+            class="modal__loan__form__input form__input--loan--amount"
+          />
+          <button class="btn--loan">Request</button>
+        </form>
+      </div>
+      <div class="overlay hidden"></div>
     </main>
 
     <!-- <footer>
