@@ -43,7 +43,7 @@ const account2 = {
 const accounts = [account1, account2];
 
 const body = document.querySelector('body');
-const labelWelcome = document.querySelector('.welcome');
+const labelWelcome = document.querySelector('.greet--username');
 const labelDate = document.querySelector('.date');
 const labelBalance = document.querySelector('.balance__value');
 const labelSumIn = document.querySelector('.summary__value--in');
@@ -71,6 +71,8 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const loginBtn = document.querySelector('.login-btn');
+const loginDisplay = document.querySelector('.main__container');
 /////////////////////////////////////////////////
 // Functions
 
@@ -200,21 +202,19 @@ const starLogOutTimer = function () {
 let currentAccount, timer;
 
 /// LOGIN BUTTON-START
-btnLogin.addEventListener('click', function (e) {
-  // Prevent form from submitting
+loginBtn.addEventListener('click', function (e) {
   e.preventDefault();
 
   currentAccount = accounts.find(
     acc => acc.username === inputLoginUsername.value
   );
   console.log(currentAccount);
+  console.log();
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
-    labelWelcome.textContent = `Welcome back, ${
-      currentAccount.owner.split(' ')[0]
-    }`;
-    containerApp.style.opacity = 100;
+    loginDisplay.classList.toggle('hide');
+    labelWelcome.textContent = `${currentAccount.owner.split(' ')[0]}`;
 
     const now = new Date();
     const options = {
@@ -226,10 +226,9 @@ btnLogin.addEventListener('click', function (e) {
       weekday: 'long', // short - narrow
     };
 
-    labelDate.textContent = new Intl.DateTimeFormat(
-      currentAccount.locale,
-      options
-    ).format(now);
+    labelDate.textContent = new Intl.DateTimeFormat('en-US', options).format(
+      now
+    );
 
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
@@ -246,31 +245,31 @@ btnLogin.addEventListener('click', function (e) {
 /// LOGIN BUTTON-ENDS
 
 /// TRANSFER BUTTON-START
-btnTransfer.addEventListener('click', function (e) {
-  e.preventDefault();
-  const amount = Number(inputTransferAmount.value);
-  const receiverAcc = accounts.find(
-    acc => acc.username === inputTransferTo.value
-  );
-  inputTransferAmount.value = inputTransferTo.value = '';
+// btnTransfer.addEventListener('click', function (e) {
+//   e.preventDefault();
+//   const amount = Number(inputTransferAmount.value);
+//   const receiverAcc = accounts.find(
+//     acc => acc.username === inputTransferTo.value
+//   );
+//   inputTransferAmount.value = inputTransferTo.value = '';
 
-  if (
-    amount > 0 &&
-    receiverAcc &&
-    currentAccount.balance >= amount &&
-    receiverAcc?.username !== currentAccount.username
-  ) {
-    // Doing the transfer
-    currentAccount.movements.push(-amount);
-    receiverAcc.movements.push(amount);
+//   if (
+//     amount > 0 &&
+//     receiverAcc &&
+//     currentAccount.balance >= amount &&
+//     receiverAcc?.username !== currentAccount.username
+//   ) {
+//     // Doing the transfer
+//     currentAccount.movements.push(-amount);
+//     receiverAcc.movements.push(amount);
 
-    // Transfer date
-    currentAccount.movementsDates.push(new Date().toISOString());
-    receiverAcc.movementsDates.push(new Date().toISOString());
-    // Update UI
-    updateUI(currentAccount);
-  }
-});
+//     // Transfer date
+//     currentAccount.movementsDates.push(new Date().toISOString());
+//     receiverAcc.movementsDates.push(new Date().toISOString());
+//     // Update UI
+//     updateUI(currentAccount);
+//   }
+// });
 /// TRANSFER BUTTON-ENDS
 
 /// LOAN BUTTON-START
@@ -295,15 +294,15 @@ btnTransfer.addEventListener('click', function (e) {
 // });
 /// LOAN BUTTON-ENDS
 
-let sorted = false;
-btnSort.addEventListener('click', function (e) {
-  console.log('click');
-  e.preventDefault();
-  displayMovements(currentAccount.movements, !sorted);
-  sorted = !sorted;
-});
+// let sorted = false;
+// btnSort.addEventListener('click', function (e) {
+//   console.log('click');
+//   e.preventDefault();
+//   displayMovements(currentAccount.movements, !sorted);
+//   sorted = !sorted;
+// });
 
-reqTransfer.addEventListener('click', function (e) {
-  e.preventDefault();
-  operationTransfer.classList.toggle('hide');
-});
+// reqTransfer.addEventListener('click', function (e) {
+//   e.preventDefault();
+//   operationTransfer.classList.toggle('hide');
+// });

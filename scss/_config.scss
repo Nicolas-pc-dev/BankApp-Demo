@@ -1,24 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
-:root {
-  --white: #fff;
-  --almond: #ede0d4ff;
-  --desert-sand: #e6ccb2ff;
-  --burlywood: #ddb892ff;
-  --cafe-au-lait: #b08968ff;
-  --coffee: #7f5539ff;
-  --brown-sugar: #9c6644ff;
-}
-
+$primary-color: #272727;
+$primary-text-color: #fdfdfd;
+$secondary-text-color: #a1a79e;
+$interface-color: #d18014;
+$interface-light-color: #64e8e8;
+$interface-hover-color: #68f8f1;
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
   font-size: 62.5%;
-  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  background-color: rgb(28, 28, 28);
+  height: 100vh;
+  color: $primary-text-color;
 }
 
 body {

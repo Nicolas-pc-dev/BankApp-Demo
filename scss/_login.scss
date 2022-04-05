@@ -1,26 +1,29 @@
 .main__container {
-  color: #444;
-  background-color: #f3f3f3;
+  color: $primary-text-color;
   height: 100vh;
-  padding: 2rem;
-  background: url(/dist/img/bg-image.jpg) no-repeat;
+  background: linear-gradient(
+      to right,
+      rgba($primary-color, 0.9),
+      rgba($primary-color, 0.3)
+    ),
+    url('/dist/img/bg-image.jpg');
   background-size: cover;
 }
 
 .login__container {
   position: absolute;
+  height: 75vh;
+  width: 50%;
+  max-width: 550px;
   margin-top: 50px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -65%);
-  max-width: 550px;
-  width: 50%;
-  height: 75vh;
-  background-color: rgba(79, 55, 35, 0.619);
+  transform: translate(-50%, -60%);
+  background-color: rgba(30, 25, 21, 0.619);
   border: 1px solid rgba(79, 55, 35, 0);
   box-shadow: 2px 4px 12px rgb(61, 61, 61);
   padding: 4rem 5rem 2rem;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(2px);
 
   .header__container {
     display: flex;
@@ -31,19 +34,17 @@
     .logo__icon i {
       text-align: center;
       line-height: 60px;
-      color: var(--white);
     }
 
     .header__title {
       font-size: 45px;
       padding: 0.7rem;
-      color: var(--white);
     }
   }
 }
 
 .form__container {
-  margin-top: 5rem;
+  margin-top: 1rem;
 
   .input__container {
     height: 200px;
@@ -60,12 +61,12 @@
         height: 45px;
         width: 80%;
         border: none;
-        border-bottom: 2px solid var(--white);
+        border-bottom: 2px solid #fff;
         border-radius: 3px;
         background: none;
-        padding: 0 0 0 25px;
+        padding: 0 0 0 0.5rem;
         outline: none;
-        color: #fff;
+        color: $primary-text-color;
         font-weight: 600;
         margin: 1rem 0;
         font-size: 1.7rem;
@@ -73,7 +74,7 @@
         cursor: pointer;
 
         &::placeholder {
-          color: var(--white);
+          color: #fff;
           font-size: 1.7rem;
           letter-spacing: 2px;
         }
@@ -83,7 +84,7 @@
         }
 
         &:hover {
-          border-bottom: 3px solid var(--white);
+          border-bottom: 3px solid #fff;
         }
 
         &:hover::placeholder {
@@ -93,10 +94,10 @@
     }
     .forgot_message {
       text-align: start;
-      margin-left: 6.2rem;
       text-decoration: none;
+      margin-left: 4rem;
       font-size: 1.3rem;
-      color: var(--white);
+      color: $secondary-text-color;
       letter-spacing: 1.5px;
 
       &:hover {
@@ -111,21 +112,23 @@
   justify-content: center;
   margin: 2rem 0;
 
-  .submit-btn {
+  .login-btn {
     height: 50px;
     width: 86%;
     border: none;
     border-radius: 5px;
-    background-color: #5f391f;
-    transition: all 0.5s;
+    background-color: #fc8f00eb;
+    color: #fff;
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--almond);
     letter-spacing: 2px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.5s;
     cursor: pointer;
 
     &:hover {
-      background-color: var(--coffee);
+      background-color: #ff9100a2;
     }
   }
 }
@@ -137,4 +140,8 @@
   .main_container {
     margin-top: 2rem;
   }
+}
+
+.hide {
+  display: none;
 }

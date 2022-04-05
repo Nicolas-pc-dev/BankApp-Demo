@@ -5,36 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="shortcut icon" type="image/png" href="/icon.png" />
-
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
       rel="stylesheet"
     />
-
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/dist/css/main.css" />
     <title>Bankist</title>
   </head>
   <body>
-    <!-- TOP NAVIGATION -->
-    <nav>
-      <p class="welcome">Log in to get started</p>
-      <img src="logo.png" alt="Logo" class="logo" />
-      <form class="login">
-        <input
-          type="text"
-          placeholder="user"
-          class="login__input login__input--user"
-        />
-        <!-- In practice, use type="password" -->
-        <input
-          type="text"
-          placeholder="PIN"
-          maxlength="4"
-          class="login__input login__input--pin"
-        />
-        <button class="login__btn">&rarr;</button>
+    <section class="main__container">
+      <form class="login__container" action="">
+        <div class="header__container">
+          <div class="logo__icon">
+            <i class="fa-solid fa-landmark fa-4x"></i>
+          </div>
+          <h1 class="header__title">BankApp Demo</h1>
+        </div>
+        <div class="form__container">
+          <div class="input__container">
+            <div class="input__fields">
+              <input
+                class="login__input--user"
+                type="text"
+                placeholder="Username *"
+              />
+              <input
+                class="login__input--pin"
+                type="password"
+                placeholder="Password *"
+              />
+            </div>
+
+            <a class="forgot_message" href="#">Forgot your password?</a>
+          </div>
+          <div class="btn_container">
+            <button type="button" class="login-btn">Get started</button>
+            <!-- <input class="submit-btn" type="submit" value="GET STARTED" /> -->
+          </div>
+        </div>
       </form>
-    </nav>
+    </section>
 
     <main class="app">
       <!-- Greet -->
@@ -65,9 +75,13 @@
       <div class="summary">
         <div class="summary__container">
           <p class="summary__label">In</p>
-          <p class="summary__value summary__value--in">0000€</p>
+          <p class="summary__value">
+            <span class="summary__value--in">0000</span> €
+          </p>
           <p class="summary__label">Out</p>
-          <p class="summary__value summary__value--out">0000€</p>
+          <p class="summary__value">
+            <span class="summary__value--out">0000</span> €
+          </p>
           <p class="summary__label">Interest</p>
           <p class="summary__value summary__value--interest">0000€</p>
         </div>
@@ -78,7 +92,7 @@
         <div class="movements__row">
           <div class="movements__type movements__type--deposit">2 deposit</div>
           <div class="movements__date">3 days ago</div>
-          <div class="movements__value">4 000€</div>
+          <div class="movements__value">4000 €</div>
         </div>
         <div class="movements__row">
           <div class="movements__type movements__type--withdrawal">
@@ -91,22 +105,21 @@
 
       <!-- OPERATION: TRANSFERS -->
       <div class="operations__container">
-        <div class="operation--btn">
-          <p class="operation--message">Sort Movements</p>
-          <button class="op-btn btn--sort">SORT</button>
-        </div>
-        <div class="operation--btn">
-          <p class="operation--message">Transfer Money</p>
-          <button class="op-btn transfer__modal--btn">Go</button>
-        </div>
-        <div class="operation--btn">
-          <p class="operation--message">Request a Loan</p>
-          <button class="op-btn loan__modal--btn">Go</button>
+        <div class="operations__container--item">
+          <button class="btn--sort">Sort Movements</button>
         </div>
 
-        <div class="operation operation--transfer hide">
+        <div class="operations__container--item">
+          <button class="">Transfer Money</button>
+        </div>
+
+        <div class="operations__container--item">
+          <button class="op-btn loan__modal--btn">Loan Request</button>
+        </div>
+
+        <div class="form__operations--transfer hide">
           <h2>Transfer money</h2>
-          <form class="form form--transfer">
+          <form class="form">
             <input type="text" class="form__input form__input--to" />
             <input type="number" class="form__input form__input--amount" />
             <button class="form__btn form__btn--transfer">&rarr;</button>
@@ -133,6 +146,6 @@
       &copy; by Jonas Schmedtmann. Don't claim as your own :)
     </footer> -->
 
-    <script src="script.js"></script>
+    <script src="/dist/js/script.js"></script>
   </body>
 </html>
