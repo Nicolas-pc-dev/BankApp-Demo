@@ -1,10 +1,10 @@
 'use strict';
 
 const account1 = {
-  owner: 'Jonas Schmedtmann',
+  owner: 'Marie Smith',
   movements: [200, 455.23, -306.5, 25000, -642.21, -133.9, 79.97, 1300],
   interestRate: 1.2, // %
-  pin: 1111,
+  pin: 1234,
 
   movementsDates: [
     '2019-11-18T21:31:17.178Z',
@@ -21,10 +21,10 @@ const account1 = {
 };
 
 const account2 = {
-  owner: 'Jessica Davis',
+  owner: 'Mark Davis',
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
-  pin: 2222,
+  pin: 6789,
 
   movementsDates: [
     '2022-01-01T13:15:33.035Z',
@@ -36,6 +36,24 @@ const account2 = {
     '2022-02-03T16:33:06.386Z',
     '2022-02-04T12:01:20.894Z',
   ],
+  currency: 'USD',
+  locale: 'en-US',
+};
+
+const account3 = {
+  owner: 'Nicolas Peña',
+  movements: [
+    {
+      date: '2022-01-01T13:15:33.035Z',
+      value: 500,
+    },
+    {
+      date: "2022-02-01T13:15:33.035Z'",
+      value: 300,
+    },
+  ],
+  interestRate: 1.5,
+  pin: 2222,
   currency: 'USD',
   locale: 'en-US',
 };
@@ -79,9 +97,11 @@ const overlay = document.querySelector('.overlay');
 
 const showLoanReq = document.querySelector('.show--loan');
 const loanModal = document.querySelector('.modal__loan');
+
+const btnLogout = document.querySelector('.logout--btn');
 /////////////////////////////////////////////////
 
-const accounts = [account1, account2];
+const accounts = [account1, account2, account3];
 let currentAccount, timer;
 let sorted = false;
 // Functions
@@ -112,19 +132,14 @@ const displayMovements = function (acc, sort = false) {
     ? acc.movements.slice().sort((a, b) => a - b)
     : acc.movements;
 
-  movs.forEach(function (mov, i) {
+  movs.forEach(function (mov) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
-    const date = new Date(acc.movementsDates[i]);
-    const displayDate = formatMovementDate(date, acc.locale);
 
     const formattedMov = formatCur(mov, acc.locale, acc.currency);
 
     const html = `
       <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
-        <div class="movements__date">${displayDate}</div>
+        <div class="movements__type movements__type--${type}">${type}</div>     
         <div class="movements__value">${formattedMov}</div>
       </div>
     `;
@@ -218,7 +233,6 @@ loginBtn.addEventListener('click', function (e) {
   currentAccount = accounts.find(
     acc => acc.username === inputLoginUsername.value
   );
-  console.log(currentAccount);
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
@@ -260,6 +274,10 @@ showTransfer.addEventListener('click', function (e) {
     transferModal.classList.remove('hidden');
     overlay.classList.remove('hidden');
   }, 500);
+
+  currentAccount.username === 'ms'
+    ? (inputTransferTo.placeholder = 'send to md account')
+    : (inputTransferTo.placeholder = 'send to ms account');
 });
 
 showLoanReq.addEventListener('click', function (e) {
@@ -287,7 +305,9 @@ closeModal.forEach(btn =>
 
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
+
   const amount = Number(inputTransferAmount.value);
+
   const receiverAcc = accounts.find(
     acc => acc.username === inputTransferTo.value
   );
@@ -352,7 +372,9 @@ btnSort.addEventListener('click', function (e) {
   sorted = !sorted;
 });
 
-// reqTransfer.addEventListener('click', function (e) {
-//   e.preventDefault();
-//   operationTransfer.classList.toggle('hide');
-// });
+// LOGOUT
+btnLogout.addEventListener('click', function (e) {
+  e.preventDefault();
+  currentAccount = [];
+  loginDisplay.classList.remove('hide');
+});

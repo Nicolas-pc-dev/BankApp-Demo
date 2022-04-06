@@ -28,7 +28,7 @@ body {
 
 .login__container {
   position: absolute;
-  height: 75vh;
+  height: 85vh;
   width: 50%;
   max-width: 550px;
   margin-top: 50px;
@@ -41,8 +41,6 @@ body {
   -webkit-box-shadow: 2px 4px 12px #3d3d3d;
           box-shadow: 2px 4px 12px #3d3d3d;
   padding: 4rem 5rem 2rem;
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
 }
 
 .login__container .header__container {
@@ -71,6 +69,26 @@ body {
   padding: 0.7rem;
 }
 
+.login__container .message--how {
+  padding-left: 2rem;
+}
+
+.login__container .message--how h3 {
+  text-align: center;
+  font-size: 1.9rem;
+  color: #ffaa00;
+}
+
+.login__container .message--how p {
+  font-size: 1.7rem;
+  margin: 0.5rem auto;
+}
+
+.login__container .message--how p span {
+  color: #ffaa00;
+  font-weight: bold;
+}
+
 .form__container {
   margin-top: 1rem;
 }
@@ -96,7 +114,7 @@ body {
 }
 
 .form__container .input__container .input__fields input {
-  height: 45px;
+  height: 55px;
   width: 80%;
   border: none;
   border-bottom: 2px solid #fff;
@@ -107,32 +125,32 @@ body {
   color: #fdfdfd;
   font-weight: 600;
   margin: 1rem 0;
-  font-size: 1.7rem;
+  font-size: 2rem;
   letter-spacing: 2px;
   cursor: pointer;
 }
 
 .form__container .input__container .input__fields input::-webkit-input-placeholder {
   color: #fff;
-  font-size: 1.7rem;
+  font-size: 2rem;
   letter-spacing: 2px;
 }
 
 .form__container .input__container .input__fields input:-ms-input-placeholder {
   color: #fff;
-  font-size: 1.7rem;
+  font-size: 2rem;
   letter-spacing: 2px;
 }
 
 .form__container .input__container .input__fields input::-ms-input-placeholder {
   color: #fff;
-  font-size: 1.7rem;
+  font-size: 2rem;
   letter-spacing: 2px;
 }
 
 .form__container .input__container .input__fields input::placeholder {
   color: #fff;
-  font-size: 1.7rem;
+  font-size: 2rem;
   letter-spacing: 2px;
 }
 
@@ -192,7 +210,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 2rem 0;
+  margin-bottom: 2rem;
 }
 
 .btn_container .login-btn {
@@ -202,7 +220,7 @@ body {
   border-radius: 5px;
   background-color: #fc8f00eb;
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
   letter-spacing: 2px;
   text-decoration: none;
@@ -229,30 +247,7 @@ body {
   display: none;
 }
 
-body {
-  background: -webkit-gradient(linear, left top, right top, from(rgba(39, 39, 39, 0.9)), to(rgba(39, 39, 39, 0.3))), url("/dist/img/bg-image2.jpg") center top;
-  background: linear-gradient(to right, rgba(39, 39, 39, 0.9), rgba(39, 39, 39, 0.3)), url("/dist/img/bg-image2.jpg") center top;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.app {
-  padding: 2rem 7rem;
-  height: 100vh;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[5];
-      grid-template-columns: repeat(5, 1fr);
-  -ms-grid-rows: 125px (50px)[8];
-      grid-template-rows: 125px repeat(8, 50px);
-  gap: 1rem;
-  background: rgba(30, 30, 30, 0.85);
-  -webkit-backdrop-filter: blur(8px);
-          backdrop-filter: blur(8px);
-}
-
 .greet {
-  padding: 1rem 2rem;
   -ms-grid-column: 1;
   -ms-grid-column-span: 5;
   grid-column: 1 / 6;
@@ -266,12 +261,12 @@ body {
 }
 
 .greet h1 {
-  font-size: 4rem;
+  font-size: 5rem;
 }
 
 .greet .greet--username {
   display: inline-block;
-  font-size: 3.2rem;
+  font-size: 4.2rem;
   color: #d18014;
 }
 
@@ -283,7 +278,17 @@ body {
   width: 5rem;
   background: #d18014;
   margin-right: 2rem;
-  top: -4px;
+  top: -3px;
+}
+
+.greet .greet--username-line::before {
+  display: inline-block;
+  position: relative;
+  content: '';
+  height: 1px;
+  width: 4rem;
+  top: 3px;
+  background: #d18014;
 }
 
 .greet .greet--username-line::after {
@@ -291,8 +296,8 @@ body {
   position: relative;
   content: '';
   height: 1px;
-  width: 4rem;
-  top: 0px;
+  width: 3rem;
+  top: 2px;
   background: #d18014;
 }
 
@@ -306,8 +311,9 @@ body {
   grid-column: 4 / 6;
   padding: 0 0.3rem;
   text-align: right;
-  font-size: 1.25rem;
+  font-size: 1.9rem;
   color: #a1a79e;
+  margin-bottom: 1.2rem;
 }
 
 .greet .sub-titles .logout-timer .timer {
@@ -316,9 +322,47 @@ body {
 }
 
 .greet .balance__date {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #a1a79e;
-  margin: 1.2rem 0;
+  margin: 1.3rem 0;
+}
+
+.greet .logout--container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: 30px;
+}
+
+.greet .logout--container button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 90%;
+  font-size: 1.9rem;
+  color: #a1a79e;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.1rem;
+}
+
+.greet .logout--container button:hover {
+  color: #d18014;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.greet .logout--container button i {
+  width: 10%;
+  margin-left: 1rem;
+  color: #d18014;
 }
 
 .balance {
@@ -384,8 +428,8 @@ body {
   border-bottom: 1px solid #eee;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
 }
 
 .movements__row:hover {
@@ -396,17 +440,12 @@ body {
 }
 
 .movements__type {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   text-transform: uppercase;
   font-weight: 500;
   padding: 0.1rem 1rem;
   border-radius: 10rem;
   margin-right: 2rem;
-}
-
-.movements__type--type {
-  background-image: -webkit-gradient(linear, right bottom, left top, from(#39b385), to(#9be15d));
-  background-image: linear-gradient(to top left, #39b385, #9be15d);
 }
 
 .movements__date {
@@ -537,14 +576,26 @@ body {
   color: #333;
 }
 
-.operations__container--loan {
-  background-image: -webkit-gradient(linear, right bottom, left top, from(#39b385), to(#9be15d));
-  background-image: linear-gradient(to top left, #39b385, #9be15d);
+body {
+  background: -webkit-gradient(linear, left top, right top, from(rgba(39, 39, 39, 0.9)), to(rgba(39, 39, 39, 0.3))), url("/dist/img/bg-image2.jpg") center top;
+  background: linear-gradient(to right, rgba(39, 39, 39, 0.9), rgba(39, 39, 39, 0.3)), url("/dist/img/bg-image2.jpg") center top;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.operations__container--close {
-  background-image: -webkit-gradient(linear, right bottom, left top, from(#e52a5a), to(#ff585f));
-  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+.app {
+  padding: 2rem 7rem;
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+  -ms-grid-rows: 140px (50px)[8];
+      grid-template-rows: 140px repeat(8, 50px);
+  gap: 1rem;
+  background: rgba(30, 30, 30, 0.85);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
 }
 
 .summary {
@@ -574,7 +625,7 @@ body {
 .summary__container {
   width: 100%;
   height: 100%;
-  margin-left: 1rem;
+  margin: 2rem 0 0 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -585,6 +636,7 @@ body {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  color: #a1a79e;
 }
 
 .summary__container--item {
@@ -604,7 +656,6 @@ body {
 
 .summary__label {
   text-transform: uppercase;
-  color: #a1a79e;
 }
 
 .summary__value {

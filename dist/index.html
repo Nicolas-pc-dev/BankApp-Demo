@@ -9,6 +9,10 @@
       href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/167e5461e8.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="/dist/css/main.css" />
     <title>Bankist</title>
   </head>
@@ -20,6 +24,11 @@
             <i class="fa-solid fa-landmark fa-4x"></i>
           </div>
           <h1 class="header__title">BankApp Demo</h1>
+          <div class="message--how">
+            <h3>Default accounts</h3>
+            <p>username: <span> ms </span> | password: <span>1234</span></p>
+            <p>username: <span> md </span> | password: <span>6789</span></p>
+          </div>
         </div>
         <div class="form__container">
           <div class="input__container">
@@ -35,8 +44,6 @@
                 placeholder="Password *"
               />
             </div>
-
-            <a class="forgot_message" href="#">Forgot your password?</a>
           </div>
           <div class="btn_container">
             <button type="button" class="login-btn">Get started</button>
@@ -56,12 +63,18 @@
         </div>
         <div class="sub-titles">
           <p class="balance__date">
-            As of <span class="date">05/03/2037</span>
+            <span class="date">05/03/2037</span>
           </p>
           <!-- LOGOUT TIMER -->
           <p class="logout-timer">
             You will be logged out in <span class="timer">05:00</span>
           </p>
+          <div class="logout--container">
+            <button class="logout--btn" type="button">
+              Logout
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+          </div>
         </div>
       </header>
       <!-- BALANCE -->
@@ -101,14 +114,12 @@
       <div class="movements">
         <div class="movements__row">
           <div class="movements__type movements__type--deposit">2 deposit</div>
-          <div class="movements__date">3 days ago</div>
           <div class="movements__value">4000 €</div>
         </div>
         <div class="movements__row">
           <div class="movements__type movements__type--withdrawal">
             1 withdrawal
           </div>
-          <div class="movements__date">24/01/2037</div>
           <div class="movements__value">-378€</div>
         </div>
       </div>
@@ -137,11 +148,13 @@
           <input
             type="text"
             class="modal__transfer__form__input form__input--to"
+            placeholder="test"
           />
           <label class="modal__transfer__form--label">Amount</label>
           <input
             type="number"
             class="modal__transfer__form__input form__input--amount"
+            placeholder="2000"
           />
           <button class="btn--transfer">Send</button>
         </form>
