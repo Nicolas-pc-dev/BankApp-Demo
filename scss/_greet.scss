@@ -3,14 +3,15 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 3px solid $interface-color;
+  padding: 2rem;
 
   & h1 {
-    font-size: 5rem;
+    font-size: clamp(4rem, 4.5vw, 5rem);
   }
 
   .greet--username {
     display: inline-block;
-    font-size: 4.2rem;
+    font-size: clamp(3.2rem, 4.5vw, 4.2rem);
     color: $interface-color;
 
     &-line {
@@ -46,15 +47,13 @@
   }
 
   .sub-titles {
-    display: block;
-
     .logout-timer {
-      grid-column: 4 / 6;
       padding: 0 0.3rem;
-      text-align: right;
-      font-size: 1.9rem;
+      // text-align: right;
+      font-size: clamp(1.5rem, 2.2vw, 2rem);
       color: $secondary-text-color;
       margin-bottom: 1.2rem;
+      text-align: right;
 
       .timer {
         font-weight: 600;
@@ -64,7 +63,7 @@
   }
 
   .balance__date {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
     color: $secondary-text-color;
     margin: 1.3rem 0;
   }
@@ -77,7 +76,7 @@
       display: flex;
       justify-content: flex-end;
       width: 90%;
-      font-size: 1.9rem;
+      font-size: clamp(1.4rem, 2.3vw, 1.9rem);
       color: $secondary-text-color;
       background-color: transparent;
       border: none;

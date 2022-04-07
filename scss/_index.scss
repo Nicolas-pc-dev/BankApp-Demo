@@ -8,15 +8,22 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
-.app {
-  padding: 2rem 7rem;
+
+.app__container {
   height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 140px repeat(8, 50px);
-  gap: 1rem;
+  display: flex;
+  justify-content: center;
   background: rgba(30, 30, 30, 0.85);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(5px);
+}
+.app {
+  width: clamp(700px, 100%, 1200px);
+  height: 70vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-auto-flow: dense;
+  grid-template-rows: 1fr repeat(auto-fill, minmax(10rem, 15rem));
+  gap: 1rem;
 }
 
 // MOVEMENTS

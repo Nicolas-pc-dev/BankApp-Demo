@@ -1,6 +1,6 @@
 .main__container {
-  color: $primary-text-color;
   height: 100vh;
+  color: $primary-text-color;
   background: linear-gradient(
       to right,
       rgba($primary-color, 0.9),
@@ -8,21 +8,21 @@
     ),
     url('/dist/img/bg-image.jpg');
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .login__container {
   position: absolute;
-  height: 85vh;
-  width: 50%;
-  max-width: 550px;
-  margin-top: 50px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -60%);
+  height: 90vh;
+  width: clamp(450px, 80%, 650px);
   background-color: rgba(30, 25, 21, 0.619);
   border: 1px solid rgba(79, 55, 35, 0);
   box-shadow: 2px 4px 12px rgb(61, 61, 61);
-  padding: 4rem 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   .header__container {
     display: flex;
@@ -30,28 +30,35 @@
     flex-direction: column;
     align-items: center;
 
-    .logo__icon i {
+    .logo__icon {
       text-align: center;
-      line-height: 60px;
-    }
+      display: flex;
+      align-items: inherit;
 
-    .header__title {
-      font-size: 45px;
-      padding: 0.7rem;
+      i {
+        &::before {
+          font-size: clamp(2rem, 4.5vw, 3.8rem);
+        }
+      }
+
+      .header__title {
+        text-align: center;
+        font-size: clamp(3.2rem, 5.2vw, 4.8rem);
+        padding: 0.7rem 1.3rem;
+        margin-top: 1rem;
+      }
     }
   }
 
   .message--how {
-    padding-left: 2rem;
-
     h3 {
       text-align: center;
-      font-size: 1.9rem;
+      font-size: clamp(2.8rem, 4vw, 3.5rem);
       color: rgb(255, 170, 0);
     }
 
     p {
-      font-size: 1.7rem;
+      font-size: clamp(1.7rem, 2.5vw, 2rem);
       margin: 0.5rem auto;
 
       span {
@@ -64,6 +71,7 @@
 
 .form__container {
   margin-top: 1rem;
+  padding: 0 7rem;
 
   .input__container {
     height: 200px;
@@ -88,13 +96,13 @@
         color: $primary-text-color;
         font-weight: 600;
         margin: 1rem 0;
-        font-size: 2rem;
+        font-size: clamp(1.8rem, 4vw, 2.3rem);
         letter-spacing: 2px;
         cursor: pointer;
 
         &::placeholder {
-          color: #fff;
-          font-size: 2rem;
+          color: rgba(255, 255, 255, 0.826);
+          font-size: clamp(1.6rem, 3vw, 2.3rem);
           letter-spacing: 2px;
         }
 
@@ -109,18 +117,6 @@
         &:hover::placeholder {
           font-size: 2rem;
         }
-      }
-    }
-    .forgot_message {
-      text-align: start;
-      text-decoration: none;
-      margin-left: 4rem;
-      font-size: 1.3rem;
-      color: $secondary-text-color;
-      letter-spacing: 1.5px;
-
-      &:hover {
-        text-decoration: underline;
       }
     }
   }
@@ -138,7 +134,7 @@
     border-radius: 5px;
     background-color: #fc8f00eb;
     color: #fff;
-    font-size: 1.8rem;
+    font-size: clamp(1.8rem, 3vw, 2rem);
     font-weight: 600;
     letter-spacing: 2px;
     text-decoration: none;
@@ -150,17 +146,4 @@
       background-color: #ff9100a2;
     }
   }
-}
-
-@media (max-width: 750px) {
-  .title {
-    text-align: center;
-  }
-  .main_container {
-    margin-top: 2rem;
-  }
-}
-
-.hide {
-  display: none;
 }

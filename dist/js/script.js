@@ -236,7 +236,7 @@ loginBtn.addEventListener('click', function (e) {
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
-    loginDisplay.classList.toggle('hide');
+    loginDisplay.classList.toggle('hidden');
     labelWelcome.textContent = `${currentAccount.owner.split(' ')[0]}`;
 
     const now = new Date();
@@ -376,5 +376,5 @@ btnSort.addEventListener('click', function (e) {
 btnLogout.addEventListener('click', function (e) {
   e.preventDefault();
   currentAccount = [];
-  loginDisplay.classList.remove('hide');
+  loginDisplay.classList.remove('hidden');
 });

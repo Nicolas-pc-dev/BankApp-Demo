@@ -17,15 +17,15 @@
     <title>Bankist</title>
   </head>
   <body>
-    <section class="main__container">
-      <form class="login__container" action="">
+    <section class="main__container hidden">
+      <form class="login__container">
         <div class="header__container">
           <div class="logo__icon">
             <i class="fa-solid fa-landmark fa-4x"></i>
+            <h1 class="header__title">BankApp Demo</h1>
           </div>
-          <h1 class="header__title">BankApp Demo</h1>
           <div class="message--how">
-            <h3>Default accounts</h3>
+            <h3>Default Accounts</h3>
             <p>username: <span> ms </span> | password: <span>1234</span></p>
             <p>username: <span> md </span> | password: <span>6789</span></p>
           </div>
@@ -53,128 +53,141 @@
       </form>
     </section>
 
-    <main class="app">
-      <!-- Greet -->
-      <header class="greet">
-        <div>
-          <h1>Welcome back</h1>
-          <span class="greet--username-line"></span>
-          <p class="greet--username">"Username"</p>
+    <section class="app__container">
+      <main class="app">
+        <!-- Greet -->
+        <header class="greet">
+          <div>
+            <h1>Welcome back</h1>
+            <span class="greet--username-line"></span>
+            <p class="greet--username">"Username"</p>
+          </div>
+          <div class="sub-titles">
+            <p class="balance__date">
+              <span class="date">05/03/2037</span>
+            </p>
+            <!-- LOGOUT TIMER -->
+            <p class="logout-timer">
+              You will be logged out in <span class="timer">05:00</span>
+            </p>
+            <div class="logout--container">
+              <button class="logout--btn" type="button">
+                Logout
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </button>
+            </div>
+          </div>
+        </header>
+        <!-- BALANCE -->
+        <div class="balance">
+          <div>
+            <p class="balance__label">Balance</p>
+          </div>
+
+          <p class="balance__value">0000€</p>
         </div>
-        <div class="sub-titles">
-          <p class="balance__date">
-            <span class="date">05/03/2037</span>
-          </p>
-          <!-- LOGOUT TIMER -->
-          <p class="logout-timer">
-            You will be logged out in <span class="timer">05:00</span>
-          </p>
-          <div class="logout--container">
-            <button class="logout--btn" type="button">
-              Logout
-              <i class="fa-solid fa-right-from-bracket"></i>
+
+        <!-- SUMMARY -->
+        <div class="summary">
+          <div class="summary__container">
+            <div class="summary__container--item">
+              <p class="summary__label">In</p>
+              <p class="summary__value">
+                <span class="summary__value--in">0000</span>
+              </p>
+            </div>
+            <div class="summary__container--item">
+              <p class="summary__label">Out</p>
+              <p class="summary__value">
+                <span class="summary__value--out">0000</span>
+              </p>
+            </div>
+            <div class="summary__container--item">
+              <p class="summary__label">Interest</p>
+              <p class="summary__value">
+                <span class="summary__value--interest">0000</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOVEMENTS -->
+        <div class="movements">
+          <div class="movements__row">
+            <div class="movements__type movements__type--deposit">
+              2 deposit
+            </div>
+            <div class="movements__value">4000 €</div>
+          </div>
+          <div class="movements__row">
+            <div class="movements__type movements__type--withdrawal">
+              1 withdrawal
+            </div>
+            <div class="movements__value">-378€</div>
+          </div>
+        </div>
+
+        <!-- OPERATIONS NAV -->
+        <div class="operations__container">
+          <div class="operations__container--item">
+            <button class="btn--sort">
+              <span class="full--text">Sort Movements</span>
+              <span class="short--text">Sort</span>
+            </button>
+          </div>
+
+          <div class="operations__container--item">
+            <button class="show--transfer">
+              <span class="full--text">Transfer Money</span>
+              <span class="short--text">Transfer</span>
+            </button>
+          </div>
+
+          <div class="operations__container--item">
+            <button class="show--loan">
+              <span class="full--text">Loan Request</span>
+              <span class="short--text">Loan</span>
             </button>
           </div>
         </div>
-      </header>
-      <!-- BALANCE -->
-      <div class="balance">
-        <div>
-          <p class="balance__label">Current balance</p>
+
+        <!-- MODAL OPTIONS --- TRANSFER -->
+        <div class="modal__transfer hidden">
+          <button class="close-modal">&times;</button>
+          <h2>Transfer money</h2>
+          <form class="modal__transfer__form">
+            <label class="modal__transfer__form--label">Transfer to</label>
+            <input
+              type="text"
+              class="modal__transfer__form__input form__input--to"
+              placeholder="test"
+            />
+            <label class="modal__transfer__form--label">Amount</label>
+            <input
+              type="number"
+              class="modal__transfer__form__input form__input--amount"
+              placeholder="2000"
+            />
+            <button class="btn--transfer">Send</button>
+          </form>
         </div>
 
-        <p class="balance__value">0000€</p>
-      </div>
-
-      <!-- SUMMARY -->
-      <div class="summary">
-        <div class="summary__container">
-          <div class="summary__container--item">
-            <p class="summary__label">In</p>
-            <p class="summary__value">
-              <span class="summary__value--in">0000</span>
-            </p>
-          </div>
-          <div class="summary__container--item">
-            <p class="summary__label">Out</p>
-            <p class="summary__value">
-              <span class="summary__value--out">0000</span>
-            </p>
-          </div>
-          <div class="summary__container--item">
-            <p class="summary__label">Interest</p>
-            <p class="summary__value">
-              <span class="summary__value--interest">0000</span>
-            </p>
-          </div>
+        <!-- MODAL OPTIONS --- LOAN -->
+        <div class="modal__loan hidden">
+          <button class="close-modal">&times;</button>
+          <h2>Request Loan</h2>
+          <form class="modal__loan__form">
+            <label class="modal__loan__form--label">Amount</label>
+            <input
+              type="number"
+              class="modal__loan__form__input form__input--loan--amount"
+            />
+            <button class="btn--loan">Request</button>
+          </form>
         </div>
-      </div>
-
-      <!-- MOVEMENTS -->
-      <div class="movements">
-        <div class="movements__row">
-          <div class="movements__type movements__type--deposit">2 deposit</div>
-          <div class="movements__value">4000 €</div>
-        </div>
-        <div class="movements__row">
-          <div class="movements__type movements__type--withdrawal">
-            1 withdrawal
-          </div>
-          <div class="movements__value">-378€</div>
-        </div>
-      </div>
-
-      <!-- OPERATIONS NAV -->
-      <div class="operations__container">
-        <div class="operations__container--item">
-          <button class="btn--sort">Sort Movements</button>
-        </div>
-
-        <div class="operations__container--item">
-          <button class="show--transfer">Transfer Money</button>
-        </div>
-
-        <div class="operations__container--item">
-          <button class="show--loan">Loan Request</button>
-        </div>
-      </div>
-
-      <!-- MODAL OPTIONS --- TRANSFER -->
-      <div class="modal__transfer hidden">
-        <button class="close-modal">&times;</button>
-        <h2>Transfer money</h2>
-        <form class="modal__transfer__form">
-          <label class="modal__transfer__form--label">Transfer to</label>
-          <input
-            type="text"
-            class="modal__transfer__form__input form__input--to"
-            placeholder="test"
-          />
-          <label class="modal__transfer__form--label">Amount</label>
-          <input
-            type="number"
-            class="modal__transfer__form__input form__input--amount"
-            placeholder="2000"
-          />
-          <button class="btn--transfer">Send</button>
-        </form>
-      </div>
-
-      <!-- MODAL OPTIONS --- LOAN -->
-      <div class="modal__loan hidden">
-        <button class="close-modal">&times;</button>
-        <h2>Request Loan</h2>
-        <form class="modal__loan__form">
-          <label class="modal__loan__form--label">Amount</label>
-          <input
-            type="number"
-            class="modal__loan__form__input form__input--loan--amount"
-          />
-          <button class="btn--loan">Request</button>
-        </form>
-      </div>
-      <div class="overlay hidden"></div>
-    </main>
+        <div class="overlay hidden"></div>
+      </main>
+    </section>
 
     <!-- <footer>
       &copy; by Jonas Schmedtmann. Don't claim as your own :)
