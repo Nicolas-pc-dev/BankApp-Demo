@@ -57,6 +57,13 @@
       align-self: center;
     }
   }
+  .modal__loan {
+    height: 40vh;
+
+    &__form {
+      align-content: space-between;
+    }
+  }
 }
 
 @media (max-width: 750px) {

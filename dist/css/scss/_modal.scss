@@ -3,7 +3,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 420px;
+  width: clamp(10rem, 42rem, 45rem);
   height: 450px;
   padding: 5rem 6rem;
   background-color: #000;
@@ -13,7 +13,7 @@
   z-index: 10;
 
   h2 {
-    font-size: 3.5rem;
+    font-size: clamp(2.9rem, 3.5vw, 3.5rem);
     color: $interface-color;
   }
 
@@ -24,7 +24,7 @@
     justify-content: center;
 
     &--label {
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 3vw, 2.5rem);
       color: $secondary-text-color;
       margin-bottom: 1rem;
     }
@@ -61,7 +61,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 700px;
+  width: clamp(350px, 70%, 600px);
   height: 250px;
   padding: 5rem 6rem;
   background-color: #000;
@@ -71,19 +71,20 @@
   z-index: 10;
 
   h2 {
-    font-size: 3.5rem;
+    font-size: clamp(2.8rem, 3.5vw, 3.5rem);
     color: $interface-color;
   }
 
   &__form {
     height: 70%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    align-content: center;
+    column-gap: 1.5rem;
     margin-top: 2rem;
 
     &--label {
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 3vw, 2.5rem);
       color: $secondary-text-color;
     }
 
@@ -105,7 +106,6 @@
     border: none;
     border-radius: 2px;
     height: 40px;
-    width: 20%;
     color: #fff;
     font-size: 2rem;
     cursor: pointer;

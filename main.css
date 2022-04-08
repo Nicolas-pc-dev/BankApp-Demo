@@ -677,7 +677,7 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  width: 420px;
+  width: clamp(10rem, 42rem, 45rem);
   height: 450px;
   padding: 5rem 6rem;
   background-color: #000;
@@ -689,7 +689,7 @@ body {
 }
 
 .modal__transfer h2 {
-  font-size: 3.5rem;
+  font-size: clamp(2.9rem, 3.5vw, 3.5rem);
   color: #d18014;
 }
 
@@ -708,7 +708,7 @@ body {
 }
 
 .modal__transfer__form--label {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 3vw, 2.5rem);
   color: #a1a79e;
   margin-bottom: 1rem;
 }
@@ -744,7 +744,7 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  width: 700px;
+  width: clamp(350px, 70%, 600px);
   height: 250px;
   padding: 5rem 6rem;
   background-color: #000;
@@ -756,26 +756,25 @@ body {
 }
 
 .modal__loan h2 {
-  font-size: 3.5rem;
+  font-size: clamp(2.8rem, 3.5vw, 3.5rem);
   color: #d18014;
 }
 
 .modal__loan__form {
   height: 70%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(15rem, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-column-gap: 1.5rem;
+          column-gap: 1.5rem;
   margin-top: 2rem;
 }
 
 .modal__loan__form--label {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 3vw, 2.5rem);
   color: #a1a79e;
 }
 
@@ -797,7 +796,6 @@ body {
   border: none;
   border-radius: 2px;
   height: 40px;
-  width: 20%;
   color: #fff;
   font-size: 2rem;
   cursor: pointer;
@@ -904,6 +902,13 @@ input::-webkit-inner-spin-button {
     -ms-flex-item-align: center;
         -ms-grid-row-align: center;
         align-self: center;
+  }
+  .modal__loan {
+    height: 40vh;
+  }
+  .modal__loan__form {
+    -ms-flex-line-pack: justify;
+        align-content: space-between;
   }
 }
 
